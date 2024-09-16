@@ -20,13 +20,19 @@ const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 
+ 
 
-mongoose.connect(process.env.DB_URL)
+mongoose.connect(`${process.env.db}`,{
+         useNewUrlParser: true,
+         useCreateIndex: true,
+         useUnifiedTopology: true,
+         useFindAndModify: false
+     })
     .then(()=>{
         console.log("DataBase Connected!")
     }).catch((e)=>{
         console.log(e)
-    })
+})
 
 const app = express();
 
