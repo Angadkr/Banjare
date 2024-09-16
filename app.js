@@ -22,7 +22,7 @@ const reviewRoutes = require('./routes/reviews');
 
  
 
-mongoose.connect(`${process.env.db}`,{
+mongoose.connect(process.env.db,{
          useNewUrlParser: true,
          useCreateIndex: true,
          useUnifiedTopology: true,
