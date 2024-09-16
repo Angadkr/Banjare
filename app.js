@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config();
-}
+
 
 //use express becuase its un-opiniated framework give flexibilty to developer to structure code however they want ,scalable,simple,with a very nice community
 const express = require('express');
@@ -15,11 +13,14 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
-
+const env = require('dotenv')
+env.config()
 
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
+
+
 
 mongoose.connect(`${process.env.DB_URL}`, {
     useNewUrlParser: true,
