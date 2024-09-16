@@ -21,19 +21,12 @@ const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 
 
-
-// mongoose.connect(`${process.env.DB_URL}`, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true,
-//     useFindAndModify: false
-// });
-
-// const db = mongoose.connection;
-// db.on("error", console.error.bind(console, "connection error:"));
-// db.once("open", () => {
-//     console.log("Database connected");
-// });
+mongoose.connect(process.env.DB_URL)
+    .then(()=>{
+        console.log("DataBase Connected!")
+    }).catch((e)=>{
+        console.log(e)
+    })
 
 const app = express();
 
@@ -96,7 +89,7 @@ app.use('/campgrounds/:id/reviews', reviewRoutes)
 
 
 app.get('/', (req, res) => {
-    res.send(process.env.DB_URL)
+    res.render('home')
 });
 
 
