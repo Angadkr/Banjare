@@ -22,17 +22,17 @@ const reviewRoutes = require('./routes/reviews');
 
  
 
-// mongoose.connect(`${process.env.MONGO_URI}`,{
-//          useNewUrlParser: true,
-//          useCreateIndex: true,
-//          useUnifiedTopology: true,
-//          useFindAndModify: false
-//      })
-//     .then(()=>{
-//         console.log("DataBase Connected!")
-//     }).catch((e)=>{
-//         console.log(e)
-//     })
+mongoose.connect(process.env.MONGO_URI,{
+         useNewUrlParser: true,
+         useCreateIndex: true,
+         useUnifiedTopology: true,
+         useFindAndModify: false
+     })
+    .then(()=>{
+        console.log("DataBase Connected!")
+    }).catch((e)=>{
+        console.log(e)
+    })
 
 const app = express();
 
@@ -95,7 +95,7 @@ app.use('/campgrounds/:id/reviews', reviewRoutes)
 
 
 app.get('/', (req, res) => {
-    res.send(process.env.MONGO_URI)
+    res.render("home")
 });
 
 
